@@ -1,0 +1,11 @@
+{
+  "name": "TaxiDriver",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "workspaces": {
+    "packages": ["packages/*"]
+  },
+  "author": "renanmartins1813",
+  "license": "MIT"
+}
