@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:15
+    container_name: postgres-db
+    environment:
+      - POSTGRES_USER=your_user
+      - POSTGRES_PASSWORD=your_password
+      - POSTGRES_DB=your_database
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "8081:8081"
+    networks:
+      - app-network
+
+  # Define your app service (optional if you want to run your app in Docker as well)
+  app:
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+      - "80:80"
+    environment:
+      DATABASE_URL: postgres://your_user:your_password@db:5432/your_database
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
