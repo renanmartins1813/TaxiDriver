@@ -20,16 +20,25 @@ export class DriverService {
   async findOne(id: number) {
     return await this.prismaService.driver.findUnique({
       where: {
-        id: id
-      }
+        id: id,
+      },
     })
   }
 
-  update(id: number, updateDriverDto: UpdateDriverDto) {
-    return `This action updates a #${id} driver`;
+  async update(id: number, updateDriverDto: UpdateDriverDto) {
+    return await this.prismaService.driver.update({
+      where: {
+        id,
+      },
+      data: updateDriverDto,
+    })
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} driver`;
+  async remove(id: number) {
+    return await this.prismaService.driver.delete({
+      where: {
+        id,
+      },
+    })
   }
 }
