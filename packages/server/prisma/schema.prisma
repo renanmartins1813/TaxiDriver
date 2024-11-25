@@ -18,7 +18,9 @@ model Driver {
   description     String
   car             String
   rating          Float
-  minimumKmRate   Float   // Taxa por Km mínimo
+  ratingText      String
+  rate            Float
+  minimumKm       Float
   rides           Ride[]  // Relacionamento com a tabela Ride
 }
 
@@ -31,10 +33,10 @@ model User {
 model Ride {
   id              Int     @id @default(autoincrement())
   customerId      Int     // Referência ao User
-  origin          Json  // Origem (por exemplo, endereço)
-  destination     Json  // Destino (por exemplo, endereço)
-  distance        Float   // Distância percorrida (em km ou outra unidade)
-  duration        Int     // Duração da viagem (em minutos)
+  origin          Json
+  destination     Json
+  distance        Float
+  duration        Int
   driverId        Int     // Referência ao Driver
   value           Float   // Valor total da corrida
   
