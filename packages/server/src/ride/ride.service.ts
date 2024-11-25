@@ -5,26 +5,17 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class RideService {
-  constructor(private readonly prismaService: PrismaService) {
+  constructor(private readonly prismaService: PrismaService) { }
 
+  estimate() {
+    return 'One day you will receive the estimated ride value'
   }
+
   create(createRideDto: CreateRideDto) {
     return 'This action adds a new ride';
   }
 
-  findAll() {
-    return `This action returns all ride`;
-  }
-
   findOne(id: number) {
     return `This action returns a #${id} ride`;
-  }
-
-  update(id: number, updateRideDto: UpdateRideDto) {
-    return `This action updates a #${id} ride`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} ride`;
   }
 }
