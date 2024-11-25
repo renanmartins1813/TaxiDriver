@@ -1,8 +1,8 @@
-import { Driver } from "@prisma/client"
+import { CreateDriverDto } from "src/driver/dto/create-driver.dto";
 
-export const drivers: Driver[] = [
+export const drivers: CreateDriverDto[] = [
 	{
-		id: 1,
+		// id: 1,
 		name: "Homer Simpson",
 		description:
 			"Olá! Sou o Homer, seu motorista camarada! Relaxe e aproveite o passeio, com direito a rosquinhas e boas risadas (e talvez alguns desvios).",
@@ -13,7 +13,7 @@ export const drivers: Driver[] = [
 		minimumKm: 1.0,
 	},
 	{
-		id: 2,
+		// id: 2,
 		name: "Dominic Toretto",
 		description:
 			"Ei, aqui é o Dom. Pode entrar, vou te levar com segurança e rapidez ao seu destino. Só não mexa no rádio, a playlist é sagrada.",
@@ -25,7 +25,7 @@ export const drivers: Driver[] = [
 		minimumKm: 5.0,
 	},
 	{
-		id: 3,
+		// id: 3,
 		name: "James Bond",
 		description:
 			"Boa noite, sou James Bond. À seu dispor para um passeio suave e discreto. Aperte o cinto e aproveite a viagem.",
