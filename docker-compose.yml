@@ -23,6 +23,7 @@ services:
       - "80:80"
     environment:
       DATABASE_URL: postgres://user-db:pwd-db@db:5432/taxi-driver-db
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
     depends_on:
       - db
     networks:
