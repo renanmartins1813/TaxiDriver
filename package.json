@@ -10,7 +10,7 @@
     "server:dev": "yarn workspace @local/server start:dev",
     "client:dev": "yarn workspace @local/client dev",
     "db:push": "yarn workspace @local/server db:push",
-    "db:seed": "node ./packages/server/prisma/seed.ts",
+    "db:seed": "ts-node ./packages/server/prisma/seed.ts",
     "dev": "yarn server:dev & yarn client:dev"
   },
   "author": "renanmartins1813",
