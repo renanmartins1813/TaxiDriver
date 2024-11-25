@@ -6,5 +6,7 @@ export class DriverEntity implements DriverModel {
   description: string;
   car: string;
   rating: number;
-  minimumKmRate: number;
+  ratingText: string;
+  rate: number;
+  minimumKm: number;
 }
