@@ -39,6 +39,7 @@ model Ride {
   duration        Int
   driverId        Int     // Referência ao Driver
   value           Float   // Valor total da corrida
+  date            DateTime @default(now()) // Data em que a corrida ocorreu
   
   customer        User    @relation(fields: [customerId], references: [id])
   driver          Driver  @relation(fields: [driverId], references: [id])
