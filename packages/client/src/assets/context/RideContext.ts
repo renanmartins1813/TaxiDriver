@@ -10,6 +10,7 @@ interface Ride {
 interface Props {
 	children: ReactNode
 }
+
 const RideContext = createContext<Ride>({
 	userId: 0,
 	userName: '',
@@ -24,11 +25,8 @@ export function RideContextProvider({ children }: Props) {
 		userId,
 		setUserId
 	}
-	return (
-		<RideContext.Provider value= { context } >
-		{ children }
-		</RideContext.Provider>
-	)
+
+	return
 }
 
 export const useRideContext = () => useContext(RideContext)
