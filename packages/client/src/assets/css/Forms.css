@@ -1,0 +1,12 @@
+.forms {
+	display: flex;
+	flex-flow: column;
+	justify-content: space-evenly;
+	align-content: center;
+	margin-bottom: 1rem;
+}
+
+.forms__button {
+	width: min-content;
+	background-color: grey;
+}
