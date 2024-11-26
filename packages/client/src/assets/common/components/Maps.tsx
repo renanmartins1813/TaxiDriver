@@ -6,7 +6,6 @@ export default function Maps() {
 	const [map, setMap] = useState<google.maps.Map | null>(null)
 	const { isLoaded } = useJsApiLoader({
 		googleMapsApiKey: String(process.env.GOOGLE_API_KEY),
-		libraries: ['places']
 	})
 
 	if (!isLoaded) {

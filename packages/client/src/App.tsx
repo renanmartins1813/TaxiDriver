@@ -1,5 +1,5 @@
-import Forms from './assets/common/components/Forms'
-import Maps from './assets/common/components/Maps'
+import { Outlet } from "react-router"
+
 function App() {
 
   return (
@@ -24,8 +24,8 @@ function App() {
       {/* <p className="read-the-docs"> */}
       {/*     Click on the Vite and React logos to learn more */}
       {/* </p> */}
-      <Maps></Maps>
-      <Forms></Forms>
+
+      <Outlet />
     </div>
   )
 }

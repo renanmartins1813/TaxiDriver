@@ -1,9 +1,16 @@
-import { Autocomplete } from "@react-google-maps/api"
-import { useRef, useState } from "react"
+import { Autocomplete, useJsApiLoader } from "@react-google-maps/api"
+import { useRef } from "react"
 
 export default function Forms() {
 	const originRef = useRef<HTMLInputElement>(null)
 	const destinationRef = useRef<HTMLInputElement>(null)
+	const { isLoaded } = useJsApiLoader({
+		googleMapsApiKey: String(process.env.GOOGLE_API_KEY),
+	})
+
+	if (!isLoaded) {
+		return (<div>Forms is Loading</div>)
+	}
 
 	return (
 		<form action="#" className="form">
