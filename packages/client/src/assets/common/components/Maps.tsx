@@ -1,11 +1,12 @@
-import { GoogleMap, Marker, useJsApiLoader, Autocomplete } from "@react-google-maps/api";
+import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
 import { useState } from "react";
 
 export default function Maps() {
 	const shopperLocation = { lat: -23.5233, lng: -46.67423 }
 	const [map, setMap] = useState<google.maps.Map | null>(null)
-	const { isLoaded } = useJsApiLoader({
+	const { isLoaded } = useLoadScript({
 		googleMapsApiKey: String(process.env.GOOGLE_API_KEY),
+		libraries: ["places"],
 	})
 
 	if (!isLoaded) {
@@ -14,35 +15,31 @@ export default function Maps() {
 
 	return (
 		<div className="maps">
-			<div className="forms">
-				<Autocomplete>
-					<input type="text" placeholder="Origin" />
-				</Autocomplete>
-
-				<Autocomplete>
-					<input type="text" placeholder="Destination" />
-				</Autocomplete>
-
-				<button className="forms__button"
-					onClick={() => {
-						map?.panTo(shopperLocation)
+			<div className="maps__map">
+				<GoogleMap
+					center={shopperLocation}
+					zoom={18}
+					options={{
+						zoomControl: false,
+						streetViewControl: false,
+						mapTypeControl: false,
+						fullscreenControl: false,
 					}}
-				>Reset Map</button>
+					mapContainerStyle={{ width: '100%', height: '100%' }}
+					onLoad={map => setMap(map)}
+				>
+					<Marker position={shopperLocation} />
+				</GoogleMap>
+
 			</div>
-			<GoogleMap
-				center={shopperLocation}
-				zoom={18}
-				options={{
-					zoomControl: false,
-					streetViewControl: false,
-					mapTypeControl: false,
-					fullscreenControl: false,
+			<button className="map__button"
+				onClick={() => {
+					map?.panTo(shopperLocation)
 				}}
-				mapContainerStyle={{ width: '100%', height: '100%' }}
-				onLoad={map => setMap(map)}
-			>
-				<Marker position={shopperLocation} />
-			</GoogleMap>
+			>Reset Map</button>
+
 		</div>
+
+
 	)
 }

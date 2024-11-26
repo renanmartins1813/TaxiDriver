@@ -1,11 +1,12 @@
-import { Autocomplete, useJsApiLoader } from "@react-google-maps/api"
+import { Autocomplete, useLoadScript } from "@react-google-maps/api"
 import { useRef } from "react"
 
 export default function Forms() {
 	const originRef = useRef<HTMLInputElement>(null)
 	const destinationRef = useRef<HTMLInputElement>(null)
-	const { isLoaded } = useJsApiLoader({
+	const { isLoaded } = useLoadScript({
 		googleMapsApiKey: String(process.env.GOOGLE_API_KEY),
+		libraries: ["places"],
 	})
 
 	if (!isLoaded) {
@@ -13,7 +14,7 @@ export default function Forms() {
 	}
 
 	return (
-		<form action="#" className="form">
+		<form action="/maps" className="form">
 			<Autocomplete>
 				<input type="text" placeholder="Origin" ref={originRef} className="form__input" />
 			</Autocomplete>
