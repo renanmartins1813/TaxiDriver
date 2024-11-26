@@ -1,4 +1,23 @@
-.Maps {
-	width: 15rem;
-	background-color: red;
+.maps {
+	width: 90vw;
+	height: 50vh;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.15rem;
+	margin-top: 4rem;
+	/* background-color: red; */
+}
+
+.forms {
+	display: flex;
+	flex-flow: column;
+	justify-content: space-evenly;
+	align-content: center;
+	margin-bottom: 1rem;
+}
+
+.forms__button {
+	background-color: grey;
 }
