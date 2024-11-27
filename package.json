@@ -7,9 +7,13 @@
     "packages": ["packages/*"]
   },
   "scripts":{
+    "db:push": "yarn workspace @local/server db:push",
+    "prisma:generate": "yarn workspace @local/server prisma:generate",
+    "db:seed": "ts-node ./packages/server/prisma/seed.ts",
     "server:dev": "yarn workspace @local/server start:dev",
     "client:dev": "yarn workspace @local/client dev",
-    "dev": "yarn server:dev & yarn client:dev"
+    "dev": "yarn server:dev & yarn client:dev",
+    "init:dev": "yarn db:push && yarn prisma:generate && yarn db:seed && yarn dev"
   },
   "author": "renanmartins1813",
   "license": "MIT"

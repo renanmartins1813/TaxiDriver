@@ -3,13 +3,14 @@ services:
     image: postgres:15
     container_name: postgres-db
     environment:
-      - POSTGRES_USER=your_user
-      - POSTGRES_PASSWORD=your_password
-      - POSTGRES_DB=your_database
+      - POSTGRES_USER=user-db
+      - POSTGRES_PASSWORD=pwd-db
+      - POSTGRES_DB=taxi-driver-db
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      # Mapping the local directory to the container's data directory
+      - ./postgres-data:/var/lib/postgresql/data  
     ports:
-      - "8081:8081"
+      - "5432:5432"
     networks:
       - app-network
 
@@ -21,7 +22,8 @@ services:
       - "8080:8080"
       - "80:80"
     environment:
-      DATABASE_URL: postgres://your_user:your_password@db:5432/your_database
+      DATABASE_URL: postgres://user-db:pwd-db@db:5432/taxi-driver-db
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
     depends_on:
       - db
     networks:

@@ -9,6 +9,9 @@ COPY package.json yarn.lock ./
 # Install dependencies
 RUN yarn install
 
+# Setup database
+# RUN yarn db:push
+# RUN yarn db:seed
 # Copy the rest of your application code into the container
 COPY . .
 
@@ -16,5 +19,5 @@ COPY . .
 EXPOSE 8080
 EXPOSE 80
 # Command to run the application (adjust as per your app's start command)
-CMD ["yarn", "dev"]
+CMD ["yarn", "init:dev"]
 
