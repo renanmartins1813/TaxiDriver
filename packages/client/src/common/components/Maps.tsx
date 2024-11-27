@@ -1,4 +1,4 @@
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
+import { GoogleMap, MarkerF, useLoadScript } from "@react-google-maps/api";
 import { useState } from "react";
 
 export default function Maps() {
@@ -7,11 +7,6 @@ export default function Maps() {
 	const { isLoaded } = useLoadScript({
 		googleMapsApiKey: String(process.env.GOOGLE_API_KEY)
 	})
-
-	function markLoad() {
-		console.log("mark loaded");
-
-	}
 
 	if (!isLoaded) {
 		return (<div>Maps is Loading</div>)
@@ -30,21 +25,20 @@ export default function Maps() {
 						fullscreenControl: false
 					}}
 					mapContainerStyle={{ width: '100%', height: '100%' }}
-					onLoad={map => setMap(map)}
+					onLoad={(map) => {
+						setMap(map)
+						console.log(map);
+
+					}}
 				>
-					<Marker position={shopperLocation} />
-					<Marker
-						position={{
-							lat: -23.523109845501015,
-							lng: -46.6742202762543,
-						}}
-						onLoad={markLoad} />
+					<MarkerF position={shopperLocation} />
 				</GoogleMap>
 
 			</div>
 			<button className="maps__button"
 				onClick={() => {
 					map?.panTo(shopperLocation)
+					map?.setZoom(18)
 				}}
 			>Reset Map</button>
 
