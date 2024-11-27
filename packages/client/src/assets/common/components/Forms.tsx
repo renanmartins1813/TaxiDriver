@@ -6,7 +6,7 @@ export default function Forms() {
 	const destinationRef = useRef<HTMLInputElement>(null)
 	const { isLoaded } = useLoadScript({
 		googleMapsApiKey: String(process.env.GOOGLE_API_KEY),
-		libraries: ["places"],
+		libraries: ["places"]
 	})
 
 	if (!isLoaded) {
@@ -14,14 +14,14 @@ export default function Forms() {
 	}
 
 	return (
-		<form action="/maps" className="form">
+		<form action="/maps" className="forms">
 			<Autocomplete>
-				<input type="text" placeholder="Origin" ref={originRef} className="form__input" />
+				<input type="text" placeholder="Origin" ref={originRef} className="forms__input" />
 			</Autocomplete>
 			<Autocomplete>
-				<input type="text" placeholder="Destination" ref={destinationRef} className="form__input" />
+				<input type="text" placeholder="Destination" ref={destinationRef} className="forms__input" />
 			</Autocomplete>
-			<button className="form__button" type="submit"></button>
+			<button className="forms__button" type="submit">Show route</button>
 		</form>
 	)
 }

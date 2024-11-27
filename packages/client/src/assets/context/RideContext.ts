@@ -11,13 +11,7 @@ interface Props {
 	children: ReactNode
 }
 
-const RideContext = createContext<Ride>({
-	userId: 0,
-	userName: '',
-	origin: '',
-	destination: '',
-	driverId: 0
-})
+const RideContext = createContext<Ride | null>(null)
 
 export function RideContextProvider({ children }: Props) {
 	const [userId, setUserId] = useState('')

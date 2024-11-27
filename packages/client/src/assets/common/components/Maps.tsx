@@ -5,9 +5,13 @@ export default function Maps() {
 	const shopperLocation = { lat: -23.5233, lng: -46.67423 }
 	const [map, setMap] = useState<google.maps.Map | null>(null)
 	const { isLoaded } = useLoadScript({
-		googleMapsApiKey: String(process.env.GOOGLE_API_KEY),
-		libraries: ["places"],
+		googleMapsApiKey: String(process.env.GOOGLE_API_KEY)
 	})
+
+	function markLoad() {
+		console.log("mark loaded");
+
+	}
 
 	if (!isLoaded) {
 		return (<div>Maps is Loading</div>)
@@ -23,16 +27,22 @@ export default function Maps() {
 						zoomControl: false,
 						streetViewControl: false,
 						mapTypeControl: false,
-						fullscreenControl: false,
+						fullscreenControl: false
 					}}
 					mapContainerStyle={{ width: '100%', height: '100%' }}
 					onLoad={map => setMap(map)}
 				>
 					<Marker position={shopperLocation} />
+					<Marker
+						position={{
+							lat: -23.523109845501015,
+							lng: -46.6742202762543,
+						}}
+						onLoad={markLoad} />
 				</GoogleMap>
 
 			</div>
-			<button className="map__button"
+			<button className="maps__button"
 				onClick={() => {
 					map?.panTo(shopperLocation)
 				}}
