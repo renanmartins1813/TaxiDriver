@@ -1,4 +1,5 @@
 import { Outlet } from "react-router"
+import { RideContextProvider } from "./assets/context/RideContext"
 
 function App() {
 
@@ -24,8 +25,9 @@ function App() {
       {/* <p className="read-the-docs"> */}
       {/*     Click on the Vite and React logos to learn more */}
       {/* </p> */}
-
-      <Outlet />
+      <RideContextProvider>
+        <Outlet />
+      </RideContextProvider>
     </div>
   )
 }
