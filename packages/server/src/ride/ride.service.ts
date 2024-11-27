@@ -7,6 +7,10 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class RideService {
   constructor(private readonly prismaService: PrismaService) { }
 
+  getRoute(origin: string, destination: string) {
+    fetch()
+  }
+
   estimate() {
     return 'One day you will receive the estimated ride value'
   }
