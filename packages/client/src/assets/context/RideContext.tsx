@@ -1,6 +1,6 @@
 import { useState, createContext, useContext, ReactNode } from "react";
 
-interface Ride {
+type Ride = {
 	userId: number,
 	setUserId: (id: number) => void,
 	userName: string,
