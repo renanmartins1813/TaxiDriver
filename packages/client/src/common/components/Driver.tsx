@@ -1,34 +1,57 @@
-import React from 'react';
 
-interface Driver {
-	id: number;
-	name: string;
-	description: string;
-	car: string;
-	rating: number;
-	ratingText: string;
-	rideValue: number;
-}
+// interface Driver {
+// 	id: number;
+// 	name: string;
+// 	description: string;
+// 	car: string;
+// 	rating: number;
+// 	ratingText: string;
+// 	rideValue: number;
+// }
+//
+// interface DriverCardProps {
+// 	driver: Driver;
+// }
 
-interface DriverCardProps {
-	driver: Driver;
-}
+export default function Driver(props: any) {
+	console.log(props)
 
-const DriverCard: React.FC<DriverCardProps> = ({ driver }) => {
+	// return (
+	// 	<>
+	// 		<p style={styles.description}>{props.description}</p>
+	// 		<h2 style={styles.name}>{props.name}</h2>
+	// 	</>)
 	return (
 		<div className="driver-card" style={styles.card}>
-			<h2 style={styles.name}>{driver.name}</h2>
-			<p style={styles.description}>{driver.description}</p>
-			<p style={styles.car}>Car: {driver.car}</p>
+			<h2 style={styles.name}>{props.name}</h2>
+			<p style={styles.description}>{props.description}</p>
+			<p style={styles.car}>Car: {props.car}</p>
 			<div style={styles.ratingContainer}>
-				<p style={styles.rating}>Rating: {driver.rating} ★</p>
-				<p style={styles.ratingText}>{driver.ratingText}</p>
+				<p style={styles.rating}>Rating: {props.rating} ★</p>
+				<p style={styles.ratingText}>{props.ratingText}</p>
 			</div>
-			<p style={styles.rideValue}>Ride Value: ${driver.rideValue.toFixed(2)}</p>
+			<p style={styles.rideValue}>Ride Value: ${props.rideValue.toFixed(2)}</p>
 		</div>
-	);
-};
 
+	)
+}
+
+// const DriverCard: React.FC<DriverCardProps> = ({ driver }) => {
+// 	return (
+// 		<div className="driver-card" style={styles.card}>
+// 			<h2 style={styles.name}>{driver.name}</h2>
+// 			<p style={styles.description}>{driver.description}</p>
+// 			<p style={styles.car}>Car: {driver.car}</p>
+// 			<div style={styles.ratingContainer}>
+// 				<p style={styles.rating}>Rating: {driver.rating} ★</p>
+// 				<p style={styles.ratingText}>{driver.ratingText}</p>
+// 			</div>
+// 			<p style={styles.rideValue}>Ride Value: ${driver.rideValue.toFixed(2)}</p>
+// 		</div>
+// 	);
+// };
+
+// export default DriverCard;
 const styles = {
 	card: {
 		border: '1px solid #ccc',
@@ -74,5 +97,4 @@ const styles = {
 	},
 };
 
-export default DriverCard;
 

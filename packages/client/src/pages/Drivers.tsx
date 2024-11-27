@@ -1,6 +1,6 @@
 import DriverCard from "../common/components/Driver"
 
-const DriversArray = [
+const DriversArray: any[] = [
 	{
 		"id": 1,
 		"name": "Homer Simpson",
@@ -34,18 +34,15 @@ const DriversArray = [
 ]
 
 export default function Drivers() {
-	{
-		DriversArray.map((driver) => {
-			console.log(driver);
-
-			return (
-
-				< DriverCard
-					id={driver.id}
-					name={driver.name}
-					description={driver.description}
-				/>
-			)
-		})
-	}
+	return (
+		< DriverCard
+			// id={DriversArray[0].id}
+			name={DriversArray[0].name}
+			description={DriversArray[0].description}
+			car={DriversArray[0].car}
+			rating={DriversArray[0].rating}
+			ratingText={DriversArray[0].ratingText}
+			rideValue={10}
+		/>
+	)
 }
