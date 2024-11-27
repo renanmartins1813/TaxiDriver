@@ -1,6 +1,5 @@
 import { Outlet } from "react-router"
-import { RideContextProvider } from "./assets/context/RideContext"
-
+import { RideContextProvider } from "./context/RideContext"
 function App() {
 
   return (
