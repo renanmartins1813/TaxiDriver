@@ -7,15 +7,32 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class RideService {
   constructor(private readonly prismaService: PrismaService) { }
 
-  getRoute(origin: string, destination: string) {
-    fetch()
+  async getRoute(origin: string, destination: string) {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json ',
+        'X-Goog-Api-Key': process.env.GOOGLE_API_KEY,
+        'X-Goog-FieldMask': '*'
+      },
+      body: '{"origin":{"address":"Liberdade, São Paulo - SP"},"destination":{"address":"SHOPPER COMERCIO ALIMENTICIO LTDA, Rua Achilles Orlando Curtolo, 646 - Parque Industrial Tomas Edson, São Paulo - SP, 01144-010"},"travelMode":"DRIVE"}'
+    };
+    let data
+
+    await fetch('https://routes.googleapis.com/directions/v2:computeRoutes', options)
+      .then(response => response.json())
+      .then(response => data = response.routes[0].legs[0])
+      .catch(err => console.error(err));
+
+    return data
   }
 
-  estimate() {
-    return 'One day you will receive the estimated ride value'
+
+  async estimate(createRideDto: CreateRideDto) {
+    return await this.getRoute('a', 'b')
   }
 
-  create(createRideDto: CreateRideDto) {
+  create(updateRideDto: UpdateRideDto) {
     return 'This action adds a new ride';
   }
 

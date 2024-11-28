@@ -8,13 +8,13 @@ export class RideController {
   constructor(private readonly rideService: RideService) { }
 
   @Post('/estimate')
-  estimate() {
-    return this.rideService.estimate()
+  estimate(@Body() createRideDto: CreateRideDto) {
+    return this.rideService.estimate(createRideDto)
   }
 
-  @Post('/confirm')
-  create(@Body() createRideDto: CreateRideDto) {
-    return this.rideService.create(createRideDto);
+  @Patch('/confirm')
+  create(@Body() updateRideDto: UpdateRideDto) {
+    return this.rideService.create(updateRideDto);
   }
 
   @Get(':userId/:driverId')
